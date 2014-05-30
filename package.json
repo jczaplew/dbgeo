@@ -1,0 +1,27 @@
+{
+  "name": "dbgeo",
+  "version": "0.0.1",
+  "description": "A Node.js module for converting database queries to GeoJSON and TopoJSON",
+  "keywords": [
+    "MySQL",
+    "Postgres",
+    "PostgreSQL",
+    "WKT",
+    "MariaDB",
+    "TopoJSON",
+    "GeoJSON",
+    "dbgeo"
+  ],
+  "main": "./dbgeo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jczaplew/dbgeo.git"
+  },
+  "author": "John J Czaplewski",
+  "license": "CC0",
+  "dependencies": {
+    "async": "~0.9.0",
+    "topojson": "~1.6.14",
+    "wellknown": "~0.2.0"
+  }
+}
