@@ -1,4 +1,4 @@
-# DB-GeoJSON (dbgeo)
+# dbgeo
 
 Convert database query results to GeoJSON or TopoJSON. Inspired by [Bryan McBride's](https://github.com/bmcbride) [PHP-Database-GeoJSON](https://github.com/bmcbride/PHP-Database-GeoJSON). Works with your database of choice - ideally paired with [node-mysql](https://github.com/felixge/node-mysql) or [node-postgres](https://github.com/brianc/node-postgres). A more flexible version of [postgeo](https://github.com/jczaplew/postgeo) and [mysql2geojson](https://github.com/jczaplew/mysql2geojson).
 
@@ -12,17 +12,18 @@ var dbgeo = require("dbgeo");
 // Query a database...
 
 dbgeo.parse({
-	"data": data,
-	"outputFormat": "geojson",
-	"geometryColumn": "geom",
-	"geometryType": "wkt"
-	"callback": function(error, result) {
-		if (error) {
-		   console.log(error);
-		}
-		// This will log a valid GeoJSON object
-		console.log(result)
-	}
+  "data": data,
+  "outputFormat": "geojson",
+  "geometryColumn": "geom",
+  "geometryType": "wkt"
+  "callback": function(error, result) {
+    if (error) {
+       console.log(error);
+    } else {
+      // This will log a valid GeoJSON object
+      console.log(result)
+    }   
+  }
 });
 
 ````

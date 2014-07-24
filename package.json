@@ -1,16 +1,21 @@
 {
   "name": "dbgeo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Node.js module for converting database queries to GeoJSON and TopoJSON",
   "keywords": [
+    "TopoJSON",
+    "GeoJSON",
+    "PostGIS",
     "MySQL",
     "Postgres",
     "PostgreSQL",
     "WKT",
     "MariaDB",
-    "TopoJSON",
-    "GeoJSON",
-    "dbgeo"
+    "dbgeo",
+    "geometry",
+    "GIS",
+    "mysql2geojson",
+    "postgeo"
   ],
   "main": "./dbgeo",
   "repository": {
