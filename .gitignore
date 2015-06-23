@@ -8,6 +8,7 @@ lib-cov
 
 npm-debug.log
 node_modules
+test/node_modules
 test/credentials.js
 
 .DS_Store

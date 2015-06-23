@@ -2,7 +2,7 @@
 
 export DB_USER=you
 
-curl -LOk http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip -o "/Users/john/Desktop/dbgeo/test/ne_110m_admin_0_countries.zip"
+curl -LOk http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip -o "ne_110m_admin_0_countries.zip"
 
 curl -LOk http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_populated_places.zip -o "ne_110m_populated_places.zip"
 

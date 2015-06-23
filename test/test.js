@@ -15,14 +15,13 @@ client.connect(function(error, success) {
 /* Select two points, returning the geometry as a GeoJSON object in the field 'geometry' */
 client.query("SELECT name, ST_AsGeoJSON(geom, 6) AS geometry FROM places LIMIT 2", function(error, result) {
   dbgeo.parse({
-    "data": result.rows,
-    "callback": function(error, result) {
-      if (error) {
-        console.log("Test 1 --- error --- ", error);
-      } else {
-        console.log("Test 1 --- successful");
-        //console.log(JSON.stringify(result));
-      }
+    "data": result.rows
+  }, function(error, result) {
+    if (error) {
+      console.log("Test 1 --- error --- ", error);
+    } else {
+      console.log("Test 1 --- successful");
+      //console.log(JSON.stringify(result));
     }
   });
 });
@@ -33,14 +32,13 @@ client.query("SELECT name, ST_AsGeoJSON(geom, 6) AS geom FROM countries LIMIT 2"
   dbgeo.parse({
     "data": result.rows,
     "geometryColumn": "geom",
-    "outputFormat": "topojson",
-    "callback": function(error, result) {
-      if (error) {
-        console.log("Test 2 --- error --- ", error);
-      } else {
-        console.log("Test 2 --- successful");
-        //console.log(JSON.stringify(result));
-      }
+    "outputFormat": "topojson"
+  }, function(error, result) {
+    if (error) {
+      console.log("Test 2 --- error --- ", error);
+    } else {
+      console.log("Test 2 --- successful");
+      //console.log(JSON.stringify(result));
     }
   });
 });
@@ -51,14 +49,13 @@ client.query("SELECT name, ST_AsText(geom) AS wkt FROM countries LIMIT 2", funct
     "data": result.rows,
     "geometryColumn": "wkt",
     "geometryType": "wkt",
-    "outputFormat": "geojson",
-    "callback": function(error, result) {
-      if (error) {
-        console.log("Test 3 --- error --- ", error);
-      } else {
-        console.log("Test 3 --- successful");
-       // console.log(JSON.stringify(result));
-      }
+    "outputFormat": "geojson"
+  }, function(error, result) {
+    if (error) {
+      console.log("Test 3 --- error --- ", error);
+    } else {
+      console.log("Test 3 --- successful");
+     // console.log(JSON.stringify(result));
     }
   });
 });
@@ -68,15 +65,15 @@ client.query("SELECT name, latitude, longitude FROM places LIMIT 2", function(er
   dbgeo.parse({
     "data": result.rows,
     "geometryColumn": ["latitude", "longitude"],
-    "geometryType": "ll",
-    "callback": function(error, result) {
-      if (error) {
-        console.log("Test 4 --- error --- ", error);
-      } else {
-        console.log("Test 4 --- successful");
-       // console.log(JSON.stringify(result));
-      }
+    "geometryType": "ll"
+  }, function(error, result) {
+    if (error) {
+      console.log("Test 4 --- error --- ", error);
+    } else {
+      console.log("Test 4 --- successful");
+     // console.log(JSON.stringify(result));
     }
   });
   client.end();
 });
+

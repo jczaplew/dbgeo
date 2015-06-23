@@ -16,21 +16,22 @@ dbgeo.parse({
   "outputFormat": "geojson",
   "geometryColumn": "geom",
   "geometryType": "wkt"
-  "callback": function(error, result) {
-    if (error) {
-       console.log(error);
-    } else {
-      // This will log a valid GeoJSON object
-      console.log(result)
-    }   
+},function(error, result) {
+  if (error) {
+    return console.log(error);
   }
+  // This will log a valid GeoJSON object
+  console.log(result)  
 });
 
 ````
 
+See ````test/test.js```` for more examples.
+
+
 ## API
 
-### .parse({ params })
+### .parse({ params, callback })
 ````params```` is an object that contains the following keys:
 
 + ````data```` (***required***) - Results from a query. Should be an array of objects.
