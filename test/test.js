@@ -77,3 +77,20 @@ client.query("SELECT name, latitude, longitude FROM places LIMIT 2", function(er
   client.end();
 });
 
+
+/* Select two points and WKB geometry */
+client.query("SELECT name, geom FROM places LIMIT 2", function(error, result) {
+  dbgeo.parse({
+    "data": result.rows,
+    "geometryColumn": "geom",
+    "geometryType": "wkb"
+  }, function(error, result) {
+    if (error) {
+      console.log("Test 5 --- error --- ", error);
+    } else {
+      console.log("Test 5 --- successful");
+     // console.log(JSON.stringify(result));
+    }
+  });
+  client.end();
+});
