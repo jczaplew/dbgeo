@@ -1,6 +1,6 @@
 {
   "name": "dbgeo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Node.js module for converting database queries to GeoJSON and TopoJSON",
   "scripts": {
     "test": "node test/test.js"
