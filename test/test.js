@@ -74,7 +74,6 @@ client.query("SELECT name, latitude, longitude FROM places LIMIT 2", function(er
      // console.log(JSON.stringify(result));
     }
   });
-  client.end();
 });
 
 
@@ -90,6 +89,21 @@ client.query("SELECT name, geom FROM places LIMIT 2", function(error, result) {
     } else {
       console.log("Test 5 --- successful");
      // console.log(JSON.stringify(result));
+    }
+  });
+});
+
+/* Select a null geometry */
+client.query("SELECT 1 AS name, null AS geom", function(error, result) {
+  dbgeo.parse({
+    "data": result.rows,
+    "geometryColumn": "geom",
+    "geometryType": "wkb"
+  }, function(error, result) {
+    if (error) {
+      console.log("Test 6 --- error --- ", error);
+    } else {
+      console.log("Test 6 --- successful");
     }
   });
   client.end();
