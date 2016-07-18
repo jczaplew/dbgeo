@@ -63,7 +63,8 @@ async.series([
       dbgeo.parse(result.rows, {
         geometryColumn: 'wkt',
         geometryType: 'wkt',
-        outputFormat: 'geojson'
+        outputFormat: 'geojson',
+        precision: 4
       }, function(error, result) {
         console.timeEnd('test3')
         if (error) {
@@ -107,7 +108,9 @@ async.series([
     console.time('test5')
     /* Select two points and WKB geometry */
     client.query('SELECT name, geom FROM places LIMIT 2', function(error, result) {
-      dbgeo.parse(result.rows, null, function(error, result) {
+      dbgeo.parse(result.rows, {
+        precision: 6
+      }, function(error, result) {
         console.timeEnd('test5')
         if (error) {
           callback({test: 5, error: error })
