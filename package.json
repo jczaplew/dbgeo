@@ -34,7 +34,8 @@
     "wkx": "~0.2.0"
   },
   "devDependencies": {
-    "async": "~1.5.2",
-    "geojsonhint": "^2.0.0-beta"
+    "async": "~2.0.0",
+    "geojsonhint": "^2.0.0-beta",
+    "pg": "^6.0.2"
   }
 }

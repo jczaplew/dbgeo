@@ -1,18 +1,18 @@
 var pg = require('pg')
 var credentials = require('./credentials')
 var dbgeo = require('../lib/dbgeo')
-var async = require('async')
+var series = require('async/series')
 var geojsonhint = require('geojsonhint')
 var client = new pg.Client('postgres://' + credentials.user + '@' + credentials.host + ':' + credentials.port + '/' + credentials.database)
 
 // Connect to postgres
 client.connect(function(error, success) {
   if (error) {
-    console.log('Could not connect to postgres');
+    console.log('Could not connect to postgres')
   }
-});
+})
 
-async.series([
+series([
   function(callback) {
     console.time('test1')
     /* Select two points, returning the geometry as a GeoJSON object in the field 'geometry' */
@@ -34,8 +34,8 @@ async.series([
 
           //console.log(JSON.stringify(result));
         }
-      });
-    });
+      })
+    })
   },
   function(callback) {
     console.time('test2')
@@ -53,8 +53,8 @@ async.series([
           callback(null)
           //console.log(JSON.stringify(result));
         }
-      });
-    });
+      })
+    })
   },
   function(callback) {
     console.time('test3')
@@ -78,8 +78,8 @@ async.series([
 
          // console.log(JSON.stringify(result));
         }
-      });
-    });
+      })
+    })
   },
   function(callback) {
     console.time('test4')
@@ -101,8 +101,8 @@ async.series([
 
          // console.log(JSON.stringify(result));
         }
-      });
-    });
+      })
+    })
   },
   function(callback) {
     console.time('test5')
@@ -123,8 +123,8 @@ async.series([
           }
          // console.log(JSON.stringify(result));
         }
-      });
-    });
+      })
+    })
   },
   function(callback) {
     console.time('test6')
@@ -142,9 +142,9 @@ async.series([
             callback(null)
           }
         }
-      });
+      })
       client.end();
-    });
+    })
   }
 ], function(error) {
   if (error) {

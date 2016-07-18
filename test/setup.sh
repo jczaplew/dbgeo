@@ -23,5 +23,3 @@ shp2pgsql -s 4326 -W "latin1" ne_110m_admin_0_countries.shp public.countries | p
 shp2pgsql -s 4326 -W "latin1" ne_110m_populated_places.shp public.places | psql -h localhost -U $DB_USER -d dbgeo -p 5432
 
 rm ne_*
-
-npm install

@@ -1,7 +1,7 @@
 # Tests/Examples
 
 ### Dependencies
-- Postgres 9.x (but any database could be used)
+- Postgres 9+
 
 ### Setup
 1. Edit ````setup.sh```` with your Postgres user name
