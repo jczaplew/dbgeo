@@ -1,26 +1,22 @@
 # dbgeo
 
-Convert database query results to GeoJSON or TopoJSON. Inspired by [Bryan McBride's](https://github.com/bmcbride) [PHP-Database-GeoJSON](https://github.com/bmcbride/PHP-Database-GeoJSON). Works with your database of choice - ideally paired with [node-mysql](https://github.com/felixge/node-mysql) or [node-postgres](https://github.com/brianc/node-postgres). A more flexible version of [postgeo](https://github.com/jczaplew/postgeo) and [mysql2geojson](https://github.com/jczaplew/mysql2geojson).
+Convert database query results to GeoJSON or TopoJSON. Inspired by [Bryan McBride's](https://github.com/bmcbride) [PHP-Database-GeoJSON](https://github.com/bmcbride/PHP-Database-GeoJSON). Works with your database of choice - ideally paired with [node-mysql](https://github.com/felixge/node-mysql), [node-postgres](https://github.com/brianc/node-postgres), or [mongodb](https://github.com/mongodb/node-mongodb-native). It is a more flexible version of [postgeo](https://github.com/jczaplew/postgeo) and [mysql2geojson](https://github.com/jczaplew/mysql2geojson) (*both deprecated*).
 
 ###### Installation
-````npm install dbgeo````
+````
+npm install dbgeo
+````
 
 ###### Example Usage
-````
-var dbgeo = require("dbgeo");
+````javascript
+var dbgeo = require('dbgeo')
 
 // Query a database...
 
-dbgeo.parse({
-  "data": data,
-  "outputFormat": "geojson",
-  "geometryColumn": "geom",
-  "geometryType": "wkt"
-},function(error, result) {
-  if (error) {
-    return console.log(error);
-  }
-  // This will log a valid GeoJSON object
+dbgeo.parse(data, {
+  outputFormat: 'geojson'
+}, function(error, result) {
+  // This will log a valid GeoJSON FeatureCollection
   console.log(result)  
 });
 
@@ -31,19 +27,29 @@ See ````test/test.js```` for more examples.
 
 ## API
 
-### .parse({ params, callback })
-````params```` is an object that contains the following keys:
+### .parse(data, options, callback)
 
-+ ````data```` (***required***) - Results from a query. Should be an array of objects.
-+ ````geometryType```` - Format of input geometry. Can be "wkt", "geojson", or "ll". "Default is "geojson".
-+ ````geometryColumn```` - Name of column that contains geometry. If input geometry type is "ll", this is an array in the format ````["latitude", "longitude"]````. Default value is "geometry".
-+ ````outputFormat```` - Can be either "geojson" or "topojson". Default value is "geojson".
-+ ````callback```` (***required***) - A function with two parameters: an error, and a result object.
+##### data (***required***)  
+An array of objects, usually results from a database query.
+
+##### options (*optional*)
+Configuration object that can contain the following keys:
+
+| argument |  description  | values  |  default value  |
+|----------|---------------|---------|-----------------|
+| `geometryType`  |  Format of input geometry | wkb, wkt, geojson, ll  | wkb  |
+| `geometryColumn`|  Name of column that contains geometry. If input geometry type is "ll", this is an array in the format ````['longitude', 'latitude']```` | *Any string*  | geom  |
+| `outputFormat`  | Desired output format  | geojson, topojson  | geojson  |
+| `precision`     | Trim the coordinate precision of the output to a given number of digits using [geojson-precision](https://github.com/jczaplew/geojson-precision) | *Any integer* | `null` (will not trim precision) |
+
+
+##### callback (***required***)
+A function with two parameters: an error, and a result object.
 
 Examples can be found in ````test/test.js````.
 
 ### .defaults{}
-The default parameters for ````.parse()````. You can set these before using ````.parse()```` if you plan to use the same options continuously.
+The default options for ````.parse()````. You can set these before using ````.parse()```` if you plan to use the same options continuously.
 
 ## License
 CC0
