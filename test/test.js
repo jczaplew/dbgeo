@@ -84,10 +84,11 @@ series([
   function(callback) {
     console.time('test4')
     /* Select two points, returning a latitude and longitude for each */
-    client.query('SELECT name, longitude, latitude FROM places LIMIT 2', function(error, result) {
+    client.query('SELECT name, longitude::float, latitude::float FROM places LIMIT 2', function(error, result) {
       dbgeo.parse(result.rows, {
         'geometryColumn': ['longitude', 'latitude'],
-        'geometryType': 'll'
+        'geometryType': 'll',
+        'precision': 6
       }, function(error, result) {
         console.timeEnd('test4')
         if (error) {
