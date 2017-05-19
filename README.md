@@ -41,6 +41,7 @@ Configuration object that can contain the following keys:
 | `geometryColumn`|  Name of column that contains geometry. If input geometry type is "ll", this is an array in the format ````['longitude', 'latitude']```` | *Any string*  | geom  |
 | `outputFormat`  | Desired output format  | geojson, topojson  | geojson  |
 | `precision`     | Trim the coordinate precision of the output to a given number of digits using [geojson-precision](https://github.com/jczaplew/geojson-precision) | *Any integer* | `null` (will not trim precision) |
+| `quantization` | Value for quantization process, typically specified as powers of ten, see [topojson.quantize](https://github.com/topojson/topojson-client/blob/master/README.md#quantize) | *Any integer greater than one* | `null` (no quantization) |
 
 
 ##### callback (***required***)
